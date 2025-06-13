@@ -1,4 +1,3 @@
-
 import './App.css';
 import Mainpage from './Component/Mainpage';
 import {Route,Routes } from 'react-router-dom';
@@ -10,7 +9,7 @@ function App() {
     //<Mainpage/>  
   <Routes>
     <Route path='/' element={<Mainpage/>}/>
-    <Route path='/:mealid' element={<Mealinfo/>} />
+    <Route path='/meal/:mealid' element={<Mealinfo/>} />
   </Routes>
   
   

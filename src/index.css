@@ -1,162 +1,701 @@
+/* CSS Custom Properties for Better Maintainability */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #6c63ff, #ec407a);
+  --accent-gradient: linear-gradient(135deg, #4facfe, #00f2fe);
+  --pink-gradient: linear-gradient(135deg, #ff9a9e, #fecfef);
+  --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #f3e5f5 25%, #fce4ec 50%, #e8eaf6 75%, #f1f8e9 100%);
+  
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: rgba(255, 255, 255, 0.8);
+  
+  --shadow-sm: 0 4px 15px rgba(102, 126, 234, 0.15);
+  --shadow-md: 0 8px 25px rgba(102, 126, 234, 0.2);
+  --shadow-lg: 0 12px 35px rgba(126, 87, 194, 0.25);
+  --shadow-hover: 0 16px 45px rgba(126, 87, 194, 0.25), 0 8px 25px rgba(236, 64, 122, 0.15);
+  
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.875rem;
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease;
+  --font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(135, 72, 244);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(126, 87, 194, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(236, 64, 122, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Typography */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.searchBar {
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 22px;
-  border-radius: 6px;
-}
-
-.searchBar input {
-  width: 400px;
-  padding: 9px;
-  font-size: 20px;
-  border-radius: 6px;
-  background-color: #e7e7e7c3;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.searchBar input:hover,
-.searchBar input:focus {
-  border-color: rgb(186, 215, 226);
-  outline: none;
-}
-
-.searchBar button {
-  width: 90px;
-  background-color: rgb(186, 215, 226);
-  color: white;
-  border: none;
-  font-size: 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.searchBar button:hover {
-  border-color: rgba(115, 201, 232, 0.76);
-  transform: scale(1.05);
-}
-
-.meals {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 21px;
-  justify-content: center;
-  width: 90%;
-  margin: auto;
-  margin-top: 44px;
-}
-
-.meals img {
-  width: 100%;
-  height: 270px;
-  border-top-left-radius: 11px;
-  border-top-right-radius: 11px;
-  transition: all 0.3s ease-in-out;
-}
-
-
-
-.mealImg {
-  width: 280px;
-  height: 380px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0px 3px 3px 3px rgb(240, 240, 240);
-  border-radius: 11px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.mealImg:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 4px 10px rgb(132, 175, 250);
-}
-
-.mealImg p {
-  font-weight: 600;
-}
-
-.mealImg button {
-  width: 120px;
-  background-color: rgb(186, 215, 226);
-  color: white;
-  font-size: 17px;
-  border: none;
-  border-radius: 21px;
-  padding: 7px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.mealImg button:hover {
-  background-color: rgb(152, 209, 230);
-  transform: scale(1.05);
-}
-
-.mealInfo img {
-  width: 400px;
-  height: 400px;
-  border-radius: 11px;
-  transition: all 0.3s ease-in-out;
-}
-
-.mealInfo img:hover {
-  transform: scale(1.05);
-}
-
-.mealInfo {
-  height: 90vh;
-  margin: auto;
-  display: flex;
-  gap: 22px;
-  justify-content: center;
-  background-color: rgb(152, 209, 230);
-  padding: 32px;
-}
-
-.mealInfo button {
-  border: none;
-  padding: 9px;
-  border-radius: 6px;
-  font-size: 19px;
-  background-color: rgb(54, 184, 232);
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.mealInfo button:hover {
-  background-color: rgb(120, 180, 200);
-  transform: scale(1.05);
-}
-
-.mealInfo .info {
-  margin-top: -112px;
-}
-
-.msg {
-  text-align: center;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  background-color: rgba(126, 87, 194, 0.1);
+  padding: 0.1875rem 0.375rem;
+  border-radius: var(--radius-sm);
+  color: #6c63ff;
+  font-size: 0.875em;
 }
 
 .head {
   text-align: center;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 700;
+  margin: 1.875rem 0;
+  letter-spacing: 1px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
 }
+
+.msg {
+  text-align: center;
+  font-size: 1.125rem;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+  margin: 1.25rem 0;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Base Button Styles */
+.btn-base {
+  border: none;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: inherit;
+  letter-spacing: 0.025em;
+}
+
+.btn-base:focus {
+  outline: 2px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
+}
+
+.btn-base:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none !important;
+}
+
+/* Search Bar */
+.searchBar {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.375rem 0;
+  padding: 0 1.25rem;
+  flex-wrap: wrap;
+}
+
+.searchBar input {
+  width: 100%;
+  max-width: 25rem;
+  min-width: 17.5rem;
+  padding: 0.875rem 1.25rem;
+  font-size: 1.125rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(126, 87, 194, 0.3);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+}
+
+.searchBar input::placeholder {
+  color: rgba(74, 85, 104, 0.6);
+}
+
+.searchBar input:hover,
+.searchBar input:focus {
+  border-color: rgba(236, 64, 122, 0.6);
+  outline: none;
+  box-shadow: var(--shadow-md), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.searchBar button {
+  min-width: 6.875rem;
+  background: var(--secondary-gradient);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.5px;
+  border: none;
+  font-family: inherit;
+}
+
+.searchBar button:hover {
+  background: linear-gradient(135deg, #7c73ff, #f06292);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.searchBar button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Meals Grid */
+.meals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  gap: 1.5625rem;
+  justify-items: center;
+  width: 90%;
+  max-width: 75rem;
+  margin: 2.75rem auto;
+  padding: 0 1.25rem;
+}
+
+/* Meal Card */
+.mealImg {
+  width: 100%;
+  max-width: 17.5rem;
+  height: 23.75rem;
+  text-align: center;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  box-shadow: var(--shadow-sm), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+  border: 1px solid rgba(236, 64, 122, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+}
+
+.mealImg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(126, 87, 194, 0.05) 0%, rgba(236, 64, 122, 0.03) 50%, rgba(79, 172, 254, 0.05) 100%);
+  pointer-events: none;
+}
+
+.mealImg:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: var(--shadow-hover), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+}
+
+.meals img {
+  width: 100%;
+  height: 16.875rem;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  transition: var(--transition);
+  filter: brightness(1.05) saturate(1.1);
+  object-fit: cover;
+}
+
+.mealImg p {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin: 0.9375rem 0.75rem;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
+.mealImg button {
+  width: 8.75rem;
+  background: var(--accent-gradient);
+  color: white;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 1.5625rem;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.3px;
+  font-family: inherit;
+}
+
+.mealImg button:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+.mealImg button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Meal Info Page */
+.mealInfo {
+  min-height: 90vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
+  padding: 2.5rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.mealInfo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(126, 87, 194, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(236, 64, 122, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.mealInfo .food-title {
+  order: 1;
+  font-size: clamp(1.75rem, 5vw, 2.625rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0 0 0.9375rem 0;
+  background: linear-gradient(135deg, #667eea, #764ba2, #ec407a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+.mealInfo button {
+  order: 2;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-xl);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--pink-gradient);
+  color: var(--text-primary);
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(236, 64, 122, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  align-self: center;
+  margin-bottom: 1.25rem;
+  font-family: inherit;
+}
+
+.mealInfo button:hover {
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(236, 64, 122, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+.mealInfo button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+.mealInfo img {
+  order: 3;
+  width: 100%;
+  max-width: 31.25rem;
+  height: 25rem;
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.05) saturate(1.1);
+  object-fit: cover;
+  margin-bottom: 1.5625rem;
+}
+
+.mealInfo img:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-hover);
+}
+
+.mealInfo .info {
+  order: 4;
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.1875rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(236, 64, 122, 0.1);
+  color: var(--text-primary);
+  line-height: 1.6;
+  max-width: 43.75rem;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+  padding: 0 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  background: var(--primary-gradient);
+  border: none;
+  padding: 0.9375rem 1.25rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  min-width: 12.5rem;
+  max-width: 18.75rem;
+  flex: 1;
+  font-family: inherit;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.nav-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.nav-btn:disabled {
+  background: linear-gradient(135deg, #ccc 0%, #999 100%);
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.next-btn .nav-content {
+  align-items: flex-end;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.nav-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+}
+
+.next-btn .nav-title {
+  text-align: right;
+}
+
+.nav-arrow {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0.625rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn:hover .nav-arrow {
+  transform: scale(1.2);
+}
+
+.prev-btn .nav-arrow {
+  margin-right: 0.9375rem;
+  margin-left: 0;
+}
+
+.next-btn .nav-arrow {
+  margin-left: 0.9375rem;
+  margin-right: 0;
+}
+
+/* Utility Classes */
+.loading,
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.loading {
+  color: #667eea;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+/* Legacy Recipe Content Styles */
+.meal-info-container {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.recipe-content {
+  background: white;
+  border-radius: 0.9375rem;
+  padding: 1.875rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 1.25rem;
+}
+
+.meal-image {
+  width: 100%;
+  max-width: 25rem;
+  height: 18.75rem;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin: 0 auto 1.25rem;
+  display: block;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-title {
+  text-align: center;
+  color: #333;
+  font-size: 1.75rem;
+  margin-bottom: 0.625rem;
+  font-weight: 700;
+}
+
+.meal-name {
+  text-align: center;
+  color: #667eea;
+  font-size: 1.5rem;
+  margin-bottom: 1.875rem;
+  font-weight: 600;
+}
+
+.instructions-section {
+  margin-top: 1.875rem;
+}
+
+.instructions-title {
+  color: #333;
+  font-size: 1.375rem;
+  margin-bottom: 0.9375rem;
+  font-weight: 600;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.625rem;
+}
+
+.instructions-content {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
+  text-align: justify;
+  background: #f8f9ff;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #667eea;
+}
+
 .carousel .legend {
-  background: rgba(0, 0, 0, 0.5);
-  font-size: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  font-size: 1rem;
+  color: var(--text-primary);
+  padding: 0.9375rem 1.5625rem;
+  border-radius: 0.9375rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(126, 87, 194, 0.2);
+  box-shadow: 0 6px 20px rgba(126, 87, 194, 0.15);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .searchBar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9375rem;
+  }
+  
+  .searchBar input {
+    width: 90%;
+    max-width: none;
+  }
+  
+  .searchBar button {
+    width: 60%;
+    max-width: 12.5rem;
+  }
+  
+  .meals {
+    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+    gap: 1.25rem;
+    width: 95%;
+    padding: 0 0.625rem;
+  }
+  
+  .mealInfo {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.875rem 0.9375rem;
+    gap: 1.25rem;
+  }
+  
+  .mealInfo .food-title {
+    order: 1;
+    font-size: clamp(1.5rem, 6vw, 2.25rem);
+    margin: 0 0 0.625rem 0;
+  }
+  
+  .mealInfo button {
+    order: 2;
+    align-self: center;
+    margin-bottom: 0.9375rem;
+  }
+  
+  .mealInfo img {
+    order: 3;
+    max-width: 20rem;
+    height: 20rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .mealInfo .info {
+    order: 4;
+    margin-top: 0;
+    padding: 1.5625rem 1.25rem;
+    max-width: none;
+  }
+  
+  .head {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+    margin: 1.25rem 0;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 0.9375rem;
+    padding: 0 0.625rem;
+  }
+  
+  .nav-btn {
+    min-width: unset;
+    max-width: unset;
+    justify-content: center;
+  }
+  
+  .nav-content {
+    align-items: center !important;
+  }
+  
+  .nav-title {
+    text-align: center !important;
+  }
+  
+  .nav-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .meals {
+    grid-template-columns: 1fr;
+    gap: 0.9375rem;
+  }
+  
+  .mealImg {
+    max-width: 100%;
+    height: 21.875rem;
+  }
+  
+  .mealInfo img {
+    max-width: 17.5rem;
+    height: 17.5rem;
+  }
+  
+  .searchBar input {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .mealInfo .info {
+    padding: 1.25rem 0.9375rem;
+  }
+  
+  .meal-image {
+    max-width: 17.5rem;
+    height: 17.5rem;
+  }
 }

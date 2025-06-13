@@ -8,12 +8,12 @@ const MealCards = ({ detail }) => {
     <div className='meals'>
       {!detail ? "" : detail.map((curItem) => {
         return (
-          <div className='mealImg'>
+          <div className='mealImg' key={curItem.idMeal}>
             <img src={curItem.strMealThumb} 
             alt={curItem.strMealThumb}
              />
             <p>{curItem.strMeal}</p>
-            <NavLink to={`/${curItem.idMeal}`}>
+            <NavLink to={`/meal/${curItem.idMeal}`}>
                 <button>Recipe</button>
             </NavLink>
           </div>
